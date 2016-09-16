@@ -1,0 +1,9 @@
+app/*
+!app/*.ts
+
+# dev env settings
+.vscode/
+
+# compiled files
+typings
+node_modules
