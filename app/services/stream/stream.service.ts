@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { ReplaySubject } from "rxjs";
 import { List } from "immutable";
 
-import { SocketService, ISocketItem } from "../socket";
+import { SocketService, ISocketPin } from "../socket";
 import { NotificationService } from "../notification";
 
 import { IStream } from "../../models/stream.model";
@@ -27,10 +27,10 @@ export class StreamService {
         this.socketService
             .get("stream")
             .subscribe(
-                (socketItem: ISocketItem) => {
-                    let stream: IStream = socketItem.item;
+                (socketPin: ISocketPin) => {
+                    let stream: IStream = socketPin.pin;
                     let index: number = this.findIndex(stream.name);
-                    if (socketItem.action === "remove") {
+                    if (socketPin.action === "remove") {
                         // Remove
                         this.list = this.list.delete(index);
                     } else {

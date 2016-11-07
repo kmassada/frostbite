@@ -1,7 +1,7 @@
 import { ReplaySubject } from "rxjs";
 import { List } from "immutable";
 
-import { SocketService, ISocketItem } from "../socket";
+import { SocketService, ISocketPin } from "../socket";
 
 import { INotification } from "../../models/notification.model";
 
@@ -22,8 +22,8 @@ export class NotificationService {
         this.socketService
             .get("notifications/" + encodeURIComponent(this.stream))
             .subscribe(
-                (socketItem: ISocketItem) => {
-                    let notification: INotification = socketItem.item;
+                (socketPin: ISocketPin) => {
+                    let notification: INotification = socketPin.pin;
                     this.streams = this.streams.push(notification);
                     this.notifications.next(this.streams);
                 },

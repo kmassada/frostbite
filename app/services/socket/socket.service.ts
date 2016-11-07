@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import * as io from "socket.io-client";
 
-import { ISocketItem } from "./socket-item.interface";
+import { ISocketPin } from "./socket.pin.interface";
 import { INotification } from "../../models/notification.model";
 
 @Injectable()
@@ -20,7 +20,7 @@ export class SocketService {
     constructor() {}
 
      /**
-      * Get items observable
+      * Get pins observable
       *
       * @class SocketService
       * @method get
@@ -39,8 +39,8 @@ export class SocketService {
 
         // Return observable which follows "create" and "remove" signals from socket stream
         return Observable.create((observer: any) => {
-            this.socket.on("create", (item: any) => observer.next({ action: "create", item: item }) );
-            this.socket.on("remove", (item: any) => observer.next({ action: "remove", item: item }) );
+            this.socket.on("create", (pin: any) => observer.next({ action: "create", pin: pin }) );
+            this.socket.on("remove", (pin: any) => observer.next({ action: "remove", pin: pin }) );
             return () => this.socket.close();
         });
     }

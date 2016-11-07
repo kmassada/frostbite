@@ -1,2 +1,2 @@
 export * from "./socket.service";
-export * from "./socket-item.interface";
+export * from "./socket.pin.interface";
