@@ -11,3 +11,6 @@ public/css
 # compiled files
 typings
 node_modules
+
+#logs
+npm-debug.log
