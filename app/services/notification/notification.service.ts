@@ -7,7 +7,7 @@ import { INotification } from "../../models/notification.model";
 
 export class NotificationService {
     notifications: ReplaySubject<any> = new ReplaySubject(1);
-    private list: List<any> = List();
+    streams: List<any> = List();
     private socketService: SocketService;
 
     /**
@@ -24,8 +24,8 @@ export class NotificationService {
             .subscribe(
                 (socketItem: ISocketItem) => {
                     let notification: INotification = socketItem.item;
-                    this.list = this.list.push(notification);
-                    this.notifications.next(this.list);
+                    this.streams = this.streams.push(notification);
+                    this.notifications.next(this.streams);
                 },
                 error => console.log(error)
             );
