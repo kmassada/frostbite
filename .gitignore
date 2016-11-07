@@ -1,6 +1,10 @@
 app/*
 !app/*.ts
 
+# assets
+public/css
+.sass-cache
+
 # dev env settings
 .vscode/
 
